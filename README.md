@@ -91,28 +91,6 @@ Entity Analysis & Visualization (matplotlib, networkx)
 
 ---
 
-## Project Structure
-
-```
-egypt_ner_project/
-│
-├── data/
-│   ├── book_of_dead_texts/     ← raw chapter text files
-│   └── annotated/              ← cleaned and annotated JSON files
-│       ├── sentences_clean.json
-│       └── annotated_sentences.json
-│
-├── outputs/                    ← saved visualizations
-│   ├── deity_demon_frequency.png
-│   ├── cooccurrence_network.png
-│   └── chapter_distribution.png
-│
-├── egypt_ner.ipynb             ← main analysis notebook
-└── README.md
-```
-
----
-
 ## How to Run
 
 ### Requirements
