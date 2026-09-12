@@ -28,7 +28,7 @@ The research question driving this work:
 With 106 mentions, Osiris accounts for over 40% of all deity references. Network analysis confirms he is the theological center of the funerary tradition, with all major deities connecting through him.
 
 **Finding 3 : Demonic content concentrates in specific chapter types**  
-Chapters 16, 13, and 19, all defensive/protective spell chapters, contain the highest demon counts. Purely invocatory hymn chapters (1, 2, 4, 21) contain zero demonic entities.
+Chapters 16, 13, and 19 contain the highest demon counts. Purely invocatory hymn chapters (1, 2, 4, 21) contain zero demonic entities.
 
 **Finding 4 : Set's primary mythological conflict is with solar deities**  
 Co-occurrence analysis shows Set appears most frequently alongside Tmu and Ra , consistent with his mythological role as the enemy of the solar cycle.
