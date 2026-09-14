@@ -9,29 +9,27 @@
 
 ## Overview
 
-This project applies Natural Language Processing to ancient Egyptian funerary texts , specifically the *Book of the Dead* (Budge translation) to identify, classify, and analyze demonic and protective supernatural entities computationally.
+An exploratory study of supernatural agents, sacred places, and ritual objects in sixteen sections of E. A. Wallis Budge's 1895 English translation of the Papyrus of Ani. Entities were annotated with a hand-built dictionary, which then trained a small spaCy model and a co-occurrence network.
 
-Standard NLP tools fail on ancient translated texts. This project builds a **domain-specific Named Entity Recognition (NER) system** trained on a custom Egyptian entity taxonomy, and uses it to map the demonological landscape of the *Book of the Dead* at a scale and resolution unavailable to traditional close reading alone.
+The research question was:
 
-The research question driving this work:
+> *"How are demonic and protective supernatural agents distributed across Book of the Dead spells, and what can computational patterns reveal about their roles in ancient Egyptian funerary belief?"*
 
-> *"How are demonic and protective supernatural agents distributed across Book of the Dead spells and what computational patterns reveal about their roles in ancient Egyptian funerary belief?"*
+The most useful result came from checking the counts against the text itself.
 
 ---
 
-## Research Findings
+## What checking the counts showed
 
-**Finding 1 : Protective deities vastly outnumber demonic entities (11:1 ratio)**  
-257 deity mentions vs. 23 demon mentions across the corpus, suggesting that funerary texts functioned primarily as invocations of divine protection rather than apotropaic defenses against evil.
+**1. Most of the "demons" are the word "Set".** The dictionary found 257 deity and 23 demon mentions. Fifteen of the 23 are the string "Set": ten times the god Seth, whom the taxonomy had filed as a demon, and five times the English verb ("stars that never set", "Set up columns"). Every hit is listed in [`outputs/count_checks.md`](outputs/count_checks.md).
 
-**Finding 2 : Osiris anchors the entire deity network**  
-With 106 mentions, Osiris accounts for over 40% of all deity references. Network analysis confirms he is the theological center of the funerary tradition, with all major deities connecting through him.
+**2. Many "Osiris" mentions are the deceased.** Osiris has 106 deity mentions, but in Budge's translation the deceased is also called Osiris ("Osiris, the scribe Ani"). At least 28 of the 106 refer to Ani, not the god.
 
-**Finding 3 : Demonic content concentrates in specific chapter types**  
-Chapters 16, 13, and 19 contain the highest demon counts. Purely invocatory hymn chapters (1, 2, 4, 21) contain zero demonic entities.
+**3. The section numbers are Budge's, not spell numbers.** The files here are sections of the translation. File 13, for example, is BD 18 (the Thoth litany) and file 19 is a hymn to Ra, so the per-file counts cannot be read as a distribution across Book of the Dead chapters.
 
-**Finding 4 : Set's primary mythological conflict is with solar deities**  
-Co-occurrence analysis shows Set appears most frequently alongside Tmu and Ra , consistent with his mythological role as the enemy of the solar cycle.
+**4. The co-occurrence network is too thin to interpret.** It has 37 nodes and 81 edges; its strongest deity-demon pair, Tmu and Set, rests on three sentences.
+
+**The lesson.** A count taken from a translation measures the translator's vocabulary, and a category imposed on Egyptian beings (here, Seth as a "demon") is an argument rather than a label. That is why the follow-up work, [Egyptian Transliteration NER](https://github.com/Juhij2/egyptian-transliteration-ner), reads Egyptian transliteration directly and takes its entity types from the corpus's own expert annotation.
 
 ---
 
@@ -65,29 +63,31 @@ A domain-specific entity taxonomy was designed with six categories:
 ### Pipeline
 
 ```
-Raw Text Files (16 chapters)
+Raw Text Files (16 sections)
         ↓
 Sentence Tokenization (NLTK)
         ↓
 Text Cleaning (regex preprocessing)
         ↓
-Bootstrapped Annotation (spaCy + domain dictionary)
+Dictionary Annotation (104 hand-listed entities)
         ↓
-Custom NER Training (spaCy blank model)
+Small spaCy Model Trained on the Dictionary Labels
         ↓
 Entity Analysis & Visualization (matplotlib, networkx)
 ```
 
 ### Corpus
-- 16 chapters from the *Book of the Dead* (E.A. Wallis Budge translation, 1895)
+- 16 sections of the *Book of the Dead*, from E. A. Wallis Budge's 1895 translation of the Papyrus of Ani (not Book of the Dead spell numbers)
 - 407 cleaned sentences
 - 527 entity annotations
 - 104 unique entities across 6 categories
 
 ### Limitations
 - All analysis is performed on English translations, not original ancient Egyptian
-- The model was trained on dictionary-bootstrapped annotations , performance on truly unseen texts requires additional annotation
-- Corpus size (16 chapters) is preliminary; future work will expand to the full papyrus
+- Counts come from dictionary matching, so they inherit every ambiguity of the English (the verb "set", the deceased called "Osiris")
+- The taxonomy files Seth as a demon, which Egyptological scholarship does not support; Egyptian has no word that separates "demon" from "deity", and scholars classify beings by function
+- The spaCy model was trained and inspected on the same dictionary labels, with no held-out evaluation
+- 16 sections is a small corpus
 
 ---
 
@@ -126,7 +126,6 @@ Together these projects form a coherent computational research arc analyzing the
 - Apply methods directly to transliterated ancient Egyptian text using the Thesaurus Linguae Aegyptiae
 - Extend entity taxonomy to include dynasty and provenance metadata
 - Cross-genre comparison with Egyptian mythic narratives
-- Submit findings to a Digital Humanities conference (DH2027)
 
 ---
 
