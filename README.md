@@ -21,9 +21,11 @@ The most useful result came from checking the counts against the text itself.
 
 ## What checking the counts showed
 
-**1. Most of the "demons" are the word "Set".** The dictionary found 257 deity and 23 demon mentions. Fifteen of the 23 are the string "Set": ten times the god Seth, whom the taxonomy had filed as a demon, and five times the English verb ("stars that never set", "Set up columns"). Every hit is listed in [`outputs/count_checks.md`](outputs/count_checks.md).
+*Correction, 1 November 2026: `chapter_17.txt` began with a second copy of the last eight sentences of `chapter_16.txt` (Budge prints that chapter, BD 50, once, on plate XVI). The numbers below exclude the copy; the earlier version of this page gave 407 sentences, 23 demon mentions and 15 "Set". Details in [`outputs/count_checks.md`](outputs/count_checks.md).*
 
-**2. Many "Osiris" mentions are the deceased.** Osiris has 106 deity mentions, but in Budge's translation the deceased is also called Osiris ("Osiris, the scribe Ani"). At least 28 of the 106 refer to Ani, not the god.
+**1. Most of the "demons" are the word "Set".** The dictionary found 254 deity and 22 demon mentions. Fourteen of the 22 are the string "Set": nine times the god Seth, whom the taxonomy had filed as a demon, and five times the English verb ("stars that never set", "Set up columns"). Every hit is listed in [`outputs/count_checks.md`](outputs/count_checks.md).
+
+**2. Many "Osiris" mentions are the deceased.** Osiris has 105 deity mentions, but in Budge's translation the deceased is also called Osiris ("Osiris, the scribe Ani"). By hand classification, 64 refer to the god, 27 to Ani, and 14 are ambiguous.
 
 **3. The section numbers are Budge's, not spell numbers.** The files here are sections of the translation. File 13, for example, is BD 18 (the Thoth litany) and file 19 is a hymn to Ra, so the per-file counts cannot be read as a distribution across Book of the Dead chapters.
 
@@ -78,8 +80,8 @@ Entity Analysis & Visualization (matplotlib, networkx)
 
 ### Corpus
 - 16 sections of the *Book of the Dead*, from E. A. Wallis Budge's 1895 translation of the Papyrus of Ani (not Book of the Dead spell numbers)
-- 407 cleaned sentences
-- 527 entity annotations
+- 399 cleaned sentences (see the correction note below)
+- 520 entity annotations
 - 104 unique entities across 6 categories
 
 ### Limitations
